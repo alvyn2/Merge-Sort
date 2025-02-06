@@ -28,31 +28,34 @@ public static void sort(int[]arr){
     while(chunkSize<=arr.length-1){
       
         start=l;
-        while(l<=arr.length){
-        while(l<start+chunkSize/2 || r<start+chunkSize && r<=arr.length){
+       // while(l<=arr.length){
+        while(l<start+chunkSize/2 || r<start+chunkSize && l<=arr.length){
  
         for(int i=l;i<arr.length-1;i+=chunkSize){
+            copyi=i;
             if(c[i]<c[i+chunkSize/2]){
                 copy[copyi]=c[i];
-                copy[copyi+1]=c[i+1];
+                copy[copyi+chunkSize/2]=c[i+chunkSize/2];
             }else{
-                copy[copyi]=c[i+1];
-                copy[copyi+1]=c[i];
+                copy[copyi]=c[i+chunkSize/2];
+                copy[copyi+chunkSize/2]=c[i];
         }
             System.out.println("copied "+copy[copyi]+" and "+copy[copyi+1]);
-            copyi+=chunkSize;
+            //copyi+=chunkSize;
+            System.out.println("i="+i);
         }
         l=r+1;
         r=l+chunkSize/2;
         copyi=l;
-        }
-        System.out.println(" inner loop ended");
+        System.out.println(" inner loop run"+ "chunksize: "+chunkSize);
+        }//innermost while loop 
+        
         l=r+1;
         r=l+chunkSize/2;
         //copyi=l;
-        for(int n:arr){
-            System.out.println(n);
-            }
+        //for(int n:arr){
+            //System.out.println(n);
+            //}
             if(c==arr){
                 c=arr2;
                 copy=arr;
@@ -60,18 +63,25 @@ public static void sort(int[]arr){
                 c=arr;
                 copy=arr2;
             }
-    }
-        
-    System.out.println("arr one chunk"+chunkSize);
+            
+            System.out.println("copy");
+            for(int n:copy){
+                System.out.println(n);
+            }
+            System.out.println("current");
+            for(int n:c){
+                System.out.println(n);
+            }
     
-    System.out.println("arr2");
-    for(int n:c){
-        System.out.println(n);
-    }
+        //}//inner while loop 2
+        
+    //System.out.println("arr one chunk"+chunkSize);
+    
 
 
     chunkSize*=2;
-    }
+    l=0;
+    }//outer while loop
     
     //old code using for loops
    
@@ -115,13 +125,14 @@ public static void sort(int[]arr){
         }
     }
     */
-    
+   
     System.out.println("end");
     for(int n:arr){
         System.out.println(n);
     }
-}
+        
+}//end sort func
 
-}
+}//end class
 
 
