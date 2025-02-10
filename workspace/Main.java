@@ -32,28 +32,28 @@ public static void sort(int[]arr){
        // while(l<=arr.length){
         while(l<=start+chunkSize/2 || r<=start+chunkSize && l<=arr.length){
        // System.out.println(r);
-        for(int i=l;i<arr.length;i+=chunkSize/2){
+        //for(int i=l;i<arr.length;i+=chunkSize/2){
             //int i=l;    
-        copyi=i;
-        System.out.println("r"+r);
-            System.out.println("i="+i);
-            for(int j=0;j<arr.length-1 ;j+=2){
-            
+       // copyi=i;
+        //System.out.println("r"+r);
+           // System.out.println("i="+i);
+            for(int j=0;j<=arr.length ;j+=2){
+            copyi=j;
             System.out.println("j="+j);
-            if(j+chunkSize/2<arr.length-1 && copyi+1<arr.length){
-            if(c[j]<c[j+1]){
+            if(copyi+chunkSize/2<arr.length){
+            if(c[j]<c[j+chunkSize/2]){
                 copy[copyi]=c[j];
-                copy[copyi+1]=c[j+1];
+                copy[copyi+chunkSize/2]=c[j+chunkSize/2];
             }else{
-                copy[copyi]=c[j+1];
-                copy[copyi+1]=c[j];
+                copy[copyi]=c[j+chunkSize/2];
+                copy[copyi+chunkSize/2]=c[j];
         
         
             }
             System.out.println("copied "+copy[copyi]); 
             
         }else{
-            System.out.println("l.e.");
+            System.out.println("error");
         }
         /* 
             if(j+chunkSize/2>=arr.length-1 && arr.length%2==1){
@@ -77,7 +77,7 @@ public static void sort(int[]arr){
         l=r+1;
         r=l+chunkSize/2;
         copyi=l;
-        }//outer for loop
+       // }//outer for loop
 
       //  l=r+1;
       //  r=l+chunkSize/2;
@@ -110,7 +110,7 @@ public static void sort(int[]arr){
     
         //}//inner while loop 2
         
-    System.out.println(" chunk"+chunkSize);
+    //System.out.println(" chunk"+chunkSize);
     
 
 
@@ -161,7 +161,7 @@ public static void sort(int[]arr){
     }
     */
    
-    System.out.println("end");
+    System.out.println("finished array");
     for(int n:arr){
         System.out.println(n);
     }
