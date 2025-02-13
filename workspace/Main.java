@@ -5,7 +5,10 @@ public class Main{
 
 
 public static void main(String[] args){
-    int[] a={1,8,4,2,5,7,9,0,3,6};
+    int[] a=new int[10];
+    for(int i=0;i<a.length;i++){
+        a[i]=1+ (int) (Math.random()*9);
+    }
     sort(a);
 }
 
@@ -15,7 +18,7 @@ public static void sort(int[]arr){
     int[] arr2 = new int[arr.length];
     int chunkSize=2;
     int l=0;
-    int r=l+chunkSize;
+    int r=l+chunkSize/2;
    // System.out.println("r"+r);
     int copyi=0;//copyindex
     int[] c=arr;//c for current
@@ -27,17 +30,72 @@ public static void sort(int[]arr){
     }
 
     //imagine each individual value is its own array already
-    while(chunkSize<=arr.length && r<=arr.length &&l<=arr.length){
-      
+    while(chunkSize<=arr.length){
+        System.out.println(" chunk"+chunkSize);
         start=l;
+        int i=l;
+        int j=r;
+        
+        copyi=start;
+        while(l<arr.length && j<arr.length){
+            i=l;
+            j=r;
+
+        while(copyi<arr.length-1 && i<r && j<r+chunkSize/2 && i<arr.length-1 && j<arr.length-1){
+            
+            System.out.println("copyi = "+ copyi);
+            System.out.println("i = "+ i);
+            System.out.println("j = "+ j);
+            if(c[i]<c[j]){
+                copy[copyi]=c[i];
+                if(i==arr.length-2){
+                    copyi++;
+                    copy[copyi]=c[j];
+                }
+                
+                i++;
+                System.out.println(" i copied "+copy[copyi] +"from"+ i); 
+
+            }else{
+                copy[copyi]=c[j];
+                if(i==arr.length-2){
+                    copyi++;
+                    copy[copyi]=c[i];
+
+                }
+                j++;
+
+            
+                System.out.println("j copied"+copy[copyi]+"from"+ j); 
+            }
+            copyi++;
+            if(i==arr.length-2){
+
+            }
+
+        }
+        System.out.println("inner while loop chunk finished");
+        if(copyi<start+chunkSize){
+            for(int k=copyi;k<start+chunkSize;k++){
+
+                copy[copyi]=c[k];
+                System.out.println("k copied  "+copy[copyi]); 
+                copyi++;
+            }
+        }
+        l=r+1;
+        r=l+chunkSize/2;
+        }
        // while(l<=arr.length){
-    while(l<=start+chunkSize/2 || r<=start+chunkSize && l<=arr.length){// does this loop do anything?
-        System.out.println(r);
-     for(int i=0;i<arr.length;i+=chunkSize/2){
+  //  while(l<=start+chunkSize/2 || r<=start+chunkSize && l<=arr.length){
+  // does this loop do anything? idk thats wh its commented out
+        //System.out.println(r);
+     //for(int i=0;i<arr.length;i+=chunkSize/2){
     //int i=l;    
     // copyi=i;
     //System.out.println("r"+r);
            // System.out.println("i="+i);
+           /* 
             for(int j=l;j<r ;j+=chunkSize){
             copyi=j;
             System.out.println("j="+j);
@@ -61,7 +119,7 @@ public static void sort(int[]arr){
             }
             System.out.println("end copied "+ copy[copyi]+" and "+copy[c.length-1]);
         }
-        /* 
+
             if(j+chunkSize/2>=arr.length-1 && arr.length%2==1){
             if(c[j]<c[j+chunkSize/2]){
                 copy[copyi]=c[j];
@@ -73,30 +131,30 @@ public static void sort(int[]arr){
         
             }
         }
-        */  
+
         //System.out.println("copied "+copy[copyi]+" and "+copy[copyi+1]);
         
         copyi+=chunkSize/2;
         
         }//inner for loop end
-       
-        l=r+1;
-        r=l+chunkSize/2;
-        copyi=l;
-     }//outer for loop
+        */
+      //  l=r+1;
+        //r=l+chunkSize/2;
+        //copyi=l;
+    // }//outer for loop
 
       //  l=r+1;
       //  r=l+chunkSize/2;
       //  copyi=l;
         System.out.println(" inner loop run");
-        }//inner while loop 
+      //  }//inner while loop 
         
-        l=r+1;
-        r=l+chunkSize/2;
+       // l=0;
+        //r=l+chunkSize/2;
         //copyi=l;
-        //for(int n:arr){
-            //System.out.println(n);
-            //}
+        for(int n:copy){
+            System.out.println(n);
+            }
             if(c==arr){
                 c=arr2;
                 copy=arr;
@@ -104,7 +162,7 @@ public static void sort(int[]arr){
                 c=arr;
                 copy=arr2;
             }
-            
+           /* 
             System.out.println("copy");
             for(int n:copy){
                 System.out.println(n);
@@ -113,10 +171,10 @@ public static void sort(int[]arr){
             for(int n:c){
                 System.out.println(n);
             }
-    
+    */
         //}//inner while loop 2
         
-    System.out.println(" chunk"+chunkSize);
+
     
 
 
@@ -136,7 +194,7 @@ public static void sort(int[]arr){
         System.out.println(n);
     }
     System.out.println("finished array2");
-    for(int n:arr){
+    for(int n:arr2){
         System.out.println(n);
     }    
 }//end sort func
