@@ -38,43 +38,49 @@ public static void sort(int[]arr){
         
         copyi=start;
         while(l<arr.length && j<arr.length){
-            i=l;
+            i=0;
             j=r;
-
-        while(copyi<arr.length-1 && i<r && j<r+chunkSize/2 && i<arr.length-1 && j<arr.length-1){
+//&& i<r && j<r+chunkSize/2
+        while(copyi<arr.length-1  && i<arr.length-1 && j<arr.length-1){
             
-            System.out.println("copyi = "+ copyi);
-            System.out.println("i = "+ i);
-            System.out.println("j = "+ j);
+           // System.out.println("copyi = "+ copyi);
+            //System.out.println("i = "+ i);
+           System.out.println("j = "+ j);
             if(c[i]<c[j]){
                 copy[copyi]=c[i];
+                System.out.println(" i copied "+copy[copyi] +"from"+ i); 
                 if(i==arr.length-2){
                     copyi++;
                     copy[copyi]=c[j];
+                    
+                    System.out.println(" extra copied "+copy[copyi]); 
                 }
                 
                 i++;
-                System.out.println(" i copied "+copy[copyi] +"from"+ i); 
+                
 
             }else{
                 copy[copyi]=c[j];
+                
+                System.out.println("j copied"+copy[copyi]+"from"+ j); 
                 if(i==arr.length-2){
                     copyi++;
                     copy[copyi]=c[i];
-
+                    System.out.println(" extra copied "+copy[copyi]); 
                 }
                 j++;
-
-            
-                System.out.println("j copied"+copy[copyi]+"from"+ j); 
             }
             copyi++;
             if(i==arr.length-2){
-
+                copy[copyi]=c[i+1];
+                System.out.println("k copied  "+copy[copyi]); 
+                copyi++;
             }
 
-        }
+        }// inner loop while
+       
         System.out.println("inner while loop chunk finished");
+        /* 
         if(copyi<start+chunkSize){
             for(int k=copyi;k<start+chunkSize;k++){
 
@@ -83,6 +89,7 @@ public static void sort(int[]arr){
                 copyi++;
             }
         }
+       */
         l=r+1;
         r=l+chunkSize/2;
         }
@@ -146,12 +153,12 @@ public static void sort(int[]arr){
       //  l=r+1;
       //  r=l+chunkSize/2;
       //  copyi=l;
-        System.out.println(" inner loop run");
       //  }//inner while loop 
         
        // l=0;
         //r=l+chunkSize/2;
         //copyi=l;
+        /* 
         for(int n:copy){
             System.out.println(n);
             }
@@ -162,7 +169,9 @@ public static void sort(int[]arr){
                 c=arr;
                 copy=arr2;
             }
-           /* 
+           */
+           
+            /* 
             System.out.println("copy");
             for(int n:copy){
                 System.out.println(n);
